@@ -46,42 +46,42 @@ public class TestController
     }
 
 
-    @Operation(summary = "Inserimento Persona",description = "Inserisce/Modifica una Persona sul Database e la restituisce con l'id autoassegnato")
-    @ApiResponses(
-        value=
-        {
-            @ApiResponse
-            (
-                responseCode = "200", 
-                description = "Persona Salvata e Restituita",
-                content = @Content(mediaType = "application/json", examples = @ExampleObject(value = ESEMPIO_RESPONSE_INSERT_PERSON))
-            ),
-            @ApiResponse
-            (
-                responseCode = "400", 
-                description = "Persona Non valida",
-                content = @Content(mediaType = "text", examples = @ExampleObject(value = "La persona non va bene, controlla i dati, non sono riuscito a salvarla"))
-            ),
-        }
-    )
-    @PostMapping("/persons")
-    public ResponseEntity<?> insertPerson(@RequestBody Person toInsert) 
-    {
-        try 
-        {
-                Person salvata = repo.save(toInsert);
-                return new ResponseEntity<Person>(salvata,HttpStatus.OK);
-        }
-        catch (Exception e) 
-        {
-                return new ResponseEntity<String>(
-                                                    "La persona non va bene, controlla i dati, non sono riuscito a salvarla",
-                                                    HttpStatus.BAD_REQUEST
-                                                );
-        }
+    // @Operation(summary = "Inserimento Persona",description = "Inserisce/Modifica una Persona sul Database e la restituisce con l'id autoassegnato")
+    // @ApiResponses(
+    //     value=
+    //     {
+    //         @ApiResponse
+    //         (
+    //             responseCode = "200", 
+    //             description = "Persona Salvata e Restituita",
+    //             content = @Content(mediaType = "application/json", examples = @ExampleObject(value = ESEMPIO_RESPONSE_INSERT_PERSON))
+    //         ),
+    //         @ApiResponse
+    //         (
+    //             responseCode = "400", 
+    //             description = "Persona Non valida",
+    //             content = @Content(mediaType = "text", examples = @ExampleObject(value = "La persona non va bene, controlla i dati, non sono riuscito a salvarla"))
+    //         ),
+    //     }
+    // )
+    // @PostMapping("/persons")
+    // public ResponseEntity<?> insertPerson(@RequestBody Person toInsert) 
+    // {
+    //     try 
+    //     {
+    //             Person salvata = repo.save(toInsert);
+    //             return new ResponseEntity<Person>(salvata,HttpStatus.OK);
+    //     }
+    //     catch (Exception e) 
+    //     {
+    //             return new ResponseEntity<String>(
+    //                                                 "La persona non va bene, controlla i dati, non sono riuscito a salvarla",
+    //                                                 HttpStatus.BAD_REQUEST
+    //                                             );
+    //     }
 
 
-    }
+    // }
    
     
 }
