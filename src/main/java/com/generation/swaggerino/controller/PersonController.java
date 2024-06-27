@@ -62,8 +62,9 @@ public class PersonController
             throw new EntityNotFoundException("Persona con id "+id+" non trovata");
         
         toUpdate.setId(id);
+        toUpdate = repo.save(toUpdate);
 
-        return repo.save(toUpdate);
+        return toUpdate;
     }
 
     @DeleteMapping("/{id}")
